@@ -16,8 +16,34 @@ export const metadata: Metadata = {
     icons: {
         icon: "/favicon.svg",
     },
-        verification: {
+    verification: {
         google: "dpvArWCXmLPn0WW6iQiGVnyoVWNKxufPO4z0kdo3cyo",
+    },
+    keywords: ["Abdelrhman Yasser", "Abdelrhman", "Frontend", "developer"],
+    authors: [{ name: "Abdelrhman Yasser" }],
+    openGraph: {
+        title: "Abdelrhman Yasser | Frontend Developer",
+        description:
+            "Frontend developer portfolio. You see projects built with React, Next.js, Tailwind CSS, and modern UI patterns.",
+        url: "https://abdelrhman-yasser.vercel.app",
+        siteName: "Abdelrhman Yasser Portfolio",
+        locale: "en_US",
+        type: "website",
+        images: [
+            {
+                url: "/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "Abdelrhman Yasser Portfolio Preview",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Abdelrhman Yasser | Frontend Developer",
+        description:
+            "Frontend developer portfolio. You see projects built with React, Next.js, Tailwind CSS, and modern UI patterns.",
+        images: ["/og-image.png"],
     },
 };
 
