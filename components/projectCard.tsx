@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+import { useTheme } from "next-themes";
 import { projects } from "@/app/data";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
@@ -9,16 +10,19 @@ function AnimatedWord({
     word,
     index,
     scrollYProgress,
+    isDark,
 }: {
     word: string;
     index: number;
     scrollYProgress: MotionValue<number>;
+    isDark: boolean;
 }) {
     const color = useTransform(
         scrollYProgress,
-       [index * 0.025, index * 0.025 + 0.025],
-        ["#888888", "#ffffff"],
+        [index * 0.025, index * 0.025 + 0.025],
+        isDark ? ["#888888", "#ffffff"] : ["#888888", "#000000"],
     );
+
     return (
         <motion.span style={{ color }} className="inline-block mr-1">
             {word}
@@ -28,6 +32,9 @@ function AnimatedWord({
 
 function ProjectCard({ project }: { project: ProjectType; i: number }) {
     const ref = useRef(null);
+    const { resolvedTheme } = useTheme();
+    const isDark = resolvedTheme === "dark";
+
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start end", "end start"],
@@ -35,17 +42,19 @@ function ProjectCard({ project }: { project: ProjectType; i: number }) {
 
     return (
         <div ref={ref}>
-                <p>
-                    {project.description.split(" ").map((word, index) => (
-                        <AnimatedWord
-                            key={index}
-                            word={word}
-                            index={index}
-                            scrollYProgress={scrollYProgress}
-                        />
-                    ))}
-                </p>
+            <p>
+                {project.description.split(" ").map((word, index) => (
+                    <AnimatedWord
+                        key={index}
+                        word={word}
+                        index={index}
+                        scrollYProgress={scrollYProgress}
+                        isDark={isDark}
+                    />
+                ))}
+            </p>
         </div>
     );
 }
+
 export default ProjectCard;

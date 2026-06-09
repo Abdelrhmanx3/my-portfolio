@@ -33,7 +33,7 @@ function Projects() {
                                         width={1200}
                                         height={700}
                                         quality={100}
-                                        className="w-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                                        className="w-full object-cover sm:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                                     />
                                 </div>
 
